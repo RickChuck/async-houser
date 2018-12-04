@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, Link} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 import Dashboard from './Components/Dashboard/Dashboard';
 import Wizard from './Components/Wizard/Wizard';
