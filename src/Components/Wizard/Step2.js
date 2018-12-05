@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 class Step2 extends Component {
     render() {
+        console.log(this.props)
         return(
             <div className='form-container'>
                 <div className='inputs-container'>
@@ -23,6 +24,11 @@ class Step2 extends Component {
 
 function mapStateToProps(state) {
     return {
+        name: state.name,
+        address: state.address,
+        city: state.city,
+        state: state.state,
+        zip: state.zip,
         img: state.img
     };
 }

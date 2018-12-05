@@ -1,37 +1,38 @@
 import React from 'react';
+import deleteAsset from '../../images/delete_button.png'
 
 function House(props) {
     return (
         <div>
-            <div className='houseInfo'>
-                <img className='img' alt='propertyImage' src={props.house.img} />
-                <div className='infoBox'>
+            <div className='house-info-container'>
+                <img className='image-box' alt='propertyImage' src={props.house.img} />
+                <div className='info-box'>
                     <button
                         className='delete'
-                        onClick={() => props.delete(props.house.house_id)}>
+                        onClick={() => props.delete(props.house.house_id)}><img src={deleteAsset} />
                         {" "}
                     </button>
-                    <div className='infoDisplay'>
+                    <div className='info-display'>
                         <label>Property Name: </label>
                         {props.house.house_name}{" "}
                     </div>
-                    <div className='infoDisplay'>
+                    <div className='info-display'>
                         <label>Address: </label>
                         {props.house.house_address}
                     </div>
-                    <div className='infoDisplay'>
+                    <div className='info-display'>
                         <lable>City: </lable>
                         {props.house.city}
                     </div>
-                    <div className='infoDisplay'>
+                    <div className='info-display'>
                         <label>State: </label>
                         {props.house.house_state}
                     </div>
-                    <div className='infoDisplay'>
+                    <div className='info-display'>
                         <label>Zipcode: </label>
                         {props.house.zip_code}{" "}
                     </div>
-                    <div className='infoBox'>
+                    <div className='info-box'>
                         <label>Monthly Mortgage Amount: </label>
                         {props.house.mortgage}{" "}
                         <label>Desired Monthly Rent: </label>

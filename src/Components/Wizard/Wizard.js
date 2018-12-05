@@ -9,7 +9,7 @@ import Step3 from './Step3';
 class Wizard extends Component {
     render() {
         return(
-            <div className='wizard'>
+            <div className='wizard-container'>
                 <div className='wizard-header'>
                     <h2>Add New Listing</h2>
                     <Link to='/' ><button className='cancel-button'>Cancel</button></Link>

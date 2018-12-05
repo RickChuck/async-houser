@@ -14,6 +14,18 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get('/api/houses', ctrl.getHouses);
+app.post('/api/add', ctrl.addHouse);
+app.delete('/api/houses/:house_id', ctrl.deleteHouse)
+
+
+SERVER_PORT = process.env.SERVER_PORT || SERVER_PORT;
+app.listen(SERVER_PORT, () => {
+    console.log(`I hear it on port: ${SERVER_PORT}`)
+})
+
+
+
 // app.use((req, res, next) => {
 //     console.log("Hey Listen! I'm middleware");
 //     next();
@@ -31,9 +43,6 @@ app.use(cors());
 //     resave: false
 // }));
 
-app.get('/api/houses', ctrl.getHouses);
-app.post('/api/add', ctrl.addHouse);
-app.delete('/api/houses/:house_id', ctrl.deleteHouse)
 
 // app.get('/api/houses', async (req, res) => {
 //     const db = req.app.get('db')
@@ -64,7 +73,3 @@ app.delete('/api/houses/:house_id', ctrl.deleteHouse)
 //     }
 // }
 // startServer();
-SERVER_PORT = process.env.SERVER_PORT || 4040;
-app.listen(SERVER_PORT, () => {
-    console.log(`I hear it on port: ${SERVER_PORT}`)
-})

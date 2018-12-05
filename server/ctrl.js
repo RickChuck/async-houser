@@ -15,15 +15,15 @@ module.exports = {
       const dbInstance = req.app.get("db");
       const {
         name: house_name,
-        house_address,
-        city,
-        house_state,
-        zip_code,
+        address: house_address,
+        city: city,
+        state: house_state,
+        zip: zip_code,
         img,
         mortgage: mortgage,
         rent: rent
       } = req.body;
-  
+
       dbInstance.add_house(
           house_name,
           house_address,

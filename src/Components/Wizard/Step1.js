@@ -10,6 +10,8 @@ import {
 } from '../../dux/reducer';
 
 class Step1 extends Component {
+
+
     render() {
         console.log(this.props);
         const{
@@ -39,7 +41,9 @@ class Step1 extends Component {
                   <input value={zip} onChange={e => updateZip(e.target.value)} />
                 </div>
                 <div className='button-container'>
-                    <Link className='next-step' to='/wizard/step2'>Next Step</Link>
+                    <Link to='/wizard/step2'>
+                    <button className='next-step' onClick={() => {}}>Next Step</button>
+                    </Link>
                 </div>
             </div>
         )
@@ -47,13 +51,12 @@ class Step1 extends Component {
 }
 
 function mapStateToProps(state) {
-    const { name, address, zip } = state;
     return {
-      name,
-      address,
+      name: state.name,
+      address: state.address,
       city: state.city,
       state: state.state,
-      zip
+      zip: state.zip
     };
 }
 

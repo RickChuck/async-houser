@@ -1,32 +1,135 @@
 .App {
-  text-align: center;
+  background-color: #afd4c0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-body {
+  background-color: #e5f4ec;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.wizard-container {
+  width: 100%;
+}
+
+h2 {
+  font-family: "Arial Narrow" sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-box {
+  width: 300px;
+  height: auto;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column; 
+}
+
+
+.wizard-header {
+  border-bottom: 1px solid black;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.delete {
+  border: none;
+  background: inherit;
+  align-self: flex-end;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.new-prop-button,
+.complete-button,
+.next-step,
+.previous-step,
+.cancel-button {
+  max-height: 35px;
+  max-width: 200px;
+  border-radius: 3px;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+  font-family: "Arial Narrow" sans-serif;
+  font-weight: 800;
+}
+
+.new-prop-button,
+.complete-button {
+  background-color: #8aea92;
+  color: black;
+}
+.next-step,
+.previous-step {
+  background-color: #3b5249;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.cancel-button {
+  background-color: #fec2c2;
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.page-container {
+  margin: 0;
+}
+
+.house-info-container {
+  background-color: #dedede;
+  margin: 20px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.info-display {
+  padding: 0 10px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 1px;
+}
+
+.info-box {
+  padding: 0 10px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
+  padding: 20px;
+}
+
+label {
+  font-size: 14px;
+  font-family: "Arial Narrow" sans-serif;
+  font-weight: 600;
+}
+
+input {
+  margin: 5px;
+  min-width: 100px;
+}
+
+.inputs-container {
+  min-height: 200px;
+  padding: 20px 10px;
 }
