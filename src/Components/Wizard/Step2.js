@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 class Step2 extends Component {
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return(
             <div className='form-container'>
                 <div className='inputs-container'>

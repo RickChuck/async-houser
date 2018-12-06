@@ -4,7 +4,7 @@
 
 .main-body {
   background-color: #e5f4ec;
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   padding: 20px;
   display: flex;
@@ -27,12 +27,23 @@ h2 {
   justify-content: space-between;
 }
 
+.dashboard-header  {
+  border-bottom: 1px solid black;
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: baseline;
+}
+
 .image-box {
-  width: 300px;
-  height: auto;
-  padding: 0 10px;
   display: flex;
   flex-direction: column; 
+  align-self: center;
+  width: inherit;
+  height: auto;
+  margin: 10px;
 }
 
 
@@ -48,6 +59,8 @@ h2 {
   border: none;
   background: inherit;
   align-self: flex-end;
+  float: right;
+  padding: 5px 0;
 }
 
 .button-container {
@@ -93,29 +106,34 @@ h2 {
 
 .house-info-container {
   background-color: #dedede;
-  margin: 20px;
+  margin: 20px 0;
   height: auto;
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  align-content: flex-start;
+  align-content: center;
+  padding: 0 10px;
 }
 
 .info-display {
   padding: 0 10px;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
-  margin: 1px;
+  margin: 10px;
+  width: inherit;
+  height: inherit;
 }
 
 .info-box {
   padding: 0 10px;
   font-size: 14px;
-  display: flex;
-  flex-direction: column;
+  text-align: start;
+  width: inherit;
+  height: inherit;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-container {
-  padding: 20px;
+  padding: 20px
 }
 
 label {
@@ -131,5 +149,9 @@ input {
 
 .inputs-container {
   min-height: 200px;
-  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 20px;
+  width: 20vw;
 }

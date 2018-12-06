@@ -23,7 +23,7 @@ class Step3 extends Component {
             mortgage,
             rent
         } = this.props;
-        console.log(this.props)
+        // console.log(this.props)
         const { updateMortgage, updateRent, submitNewProperty} = this.props;
         return(
             <div className='form-container'>

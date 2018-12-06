@@ -9,7 +9,7 @@ function House(props) {
                 <div className='info-box'>
                     <button
                         className='delete'
-                        onClick={() => props.delete(props.house.house_id)}><img src={deleteAsset} />
+                        onClick={() => props.delete(props.house.house_id)} ><img src={deleteAsset} alt='delete'/>
                         {" "}
                     </button>
                     <div className='info-display'>
@@ -21,7 +21,7 @@ function House(props) {
                         {props.house.house_address}
                     </div>
                     <div className='info-display'>
-                        <lable>City: </lable>
+                        <label>City: </label>
                         {props.house.city}
                     </div>
                     <div className='info-display'>

@@ -13,13 +13,11 @@ class Dashboard extends Component {
             house: []
         }
         this.handleDelete = this.handleDelete.bind(this)
-        this.refreshPage = this.refreshPage.bind(this)
     }
 
     componentDidMount() {
         axios.get(BASE_URL + '/api/houses')
         .then(res => {
-            console.log(res.body)
             this.setState({house: res.data});
         });
     };
@@ -32,26 +30,29 @@ class Dashboard extends Component {
                 });
                 console.log(newHouses);
                 this.setState({ house: newHouses });
+            } else {
+                window.location.reload();
             }
         });
     };
 
-    refreshPage() {
-        window.location.reload();
-    }
+    
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return(
             <div className='page-container'>
                 <div className='page-header'>
-                            <Link to='/wizard/step1'>
-                            <button className='new-prop-button'>Add New Property</button></Link>                      
+                    <div className='dashboard-header'>
+                        <h2>Dashboard</h2>
+                        <Link to='/wizard/step1'>
+                        <button className='new-prop-button'>Add New Property</button></Link>                      
+                    </div>
                 </div>
                     <h3>Home Listings</h3>
                     {this.state.house.map(house => {
                         return (
-                            <House key={house.house_id} house={house} delete={this.handleDelete} />
+                            <House key={house.house_id} house={house} delete={this.handleDelete} refresh={this.refreshPage} />
                         );
                     })}
             </div>

@@ -13,7 +13,7 @@ class Step1 extends Component {
 
 
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         const{
             updateName,
             updateAddress,

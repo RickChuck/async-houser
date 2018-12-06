@@ -26,31 +26,31 @@ const SUBMIT_NEW_PROPERTY = "SUBMIT_NEW_PROPERTY";
 function reducer(state = initialState, action) {
     switch(action.type) {
         case UPDATE_NAME:
-            console.log(action.payload);
+            // console.log(action.payload);
             return { ...state, name: action.payload };
         case UPDATE_ADDRESS:
-            console.log(action.payload);
+            // console.log(action.payload);
             return { ...state, address: action.payload };
         case UPDATE_CITY:
-            console.log(action.payload);
+            // console.log(action.payload);
             return { ...state, city: action.payload };
         case UPDATE_STATE:
-            console.log(action.payload);
+            // console.log(action.payload);
             return { ...state, state: action.payload };
         case UPDATE_ZIP:
-            console.log(action.payload);
+            // console.log(action.payload);
             return { ...state, zip: action.payload }
         case UPDATE_IMG:
-            console.log(action.payload);
+            // console.log(action.payload);
             return { ...state, img: action.payload };
         case UPDATE_MORTGAGE:
-            console.log(action.payload);
+            // console.log(action.payload);
             return { ...state, mortgage: action.payload };
         case UPDATE_RENT:
-            console.log(action.payload);
+            // console.log(action.payload);
             return { ...state, rent: action.payload };
         case SUBMIT_NEW_PROPERTY:
-            console.log(action.payload);
+            // console.log(action.payload);
             return {
                 house: [...this.house, action.payload],
                 name: action.payload,
@@ -146,7 +146,7 @@ export function submitNewProperty(
     );
     return {
         type: SUBMIT_NEW_PROPERTY,
-        payload: axios
+        payload : axios
         .post(BASE_URL + "/api/add", {
             name,
             address,
