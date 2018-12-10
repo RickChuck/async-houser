@@ -1,55 +1,20 @@
 module.exports = {
-    getHouses: (req, res, next) => {
-      const dbInstance = req.app.get("db");
+  getHouses: (req, res) => {
+      const db = req.app.get('db');
+      db.getListings(req.session.userId).then(listings => res.send(listings));
+      console.log(req.body)
+  },
+  create: (req, res) => {
+      console.log(req.body)
+      const db = req.app.get('db');
+      const {property_name, property_descrip, address, city, myState, zip, img_url, loan_amount, monthly_mortgage, desired_rent} = req.body
+      db.makeListing([property_name, property_descrip, address, city, myState, zip, img_url, loan_amount, monthly_mortgage, desired_rent, req.session.userId]).then(listing => res.send(listing))
 
-      dbInstance.get_houses()
-        .then(houses => {
-          res.status(200).send(houses);
-        })
-        .catch(error => {
-          console.log(error);
-          res.status(500).send(error);
-        });
-    },
-    addHouse: (req, res, next) => {
-      const dbInstance = req.app.get("db");
-      const {
-        name: house_name,
-        address: house_address,
-        city: city,
-        state: house_state,
-        zip: zip_code,
-        img,
-        mortgage: mortgage,
-        rent: rent
-      } = req.body;
-
-      dbInstance.add_house(
-          house_name,
-          house_address,
-          city,
-          house_state,
-          zip_code,
-          img,
-          mortgage,
-          rent
-        ).then(() => {
-          res.sendStatus(200);
-        })
-        .catch(error => {
-          res.status(500).send(error);
-          console.log(error);
-        });
-    },
-    deleteHouse: async (req, res, next) => {
-      const dbInstance = req.app.get("db");
-      const { house_id } = req.params;
-  
-      await dbInstance.delete_houses([house_id])
-        .then(() => res.sendStatus(200))
-        .catch(error => {
-          console.log("did not delete", error);
-          res.status(500).send(error, { errorMessage: "error at deleteProduct" });
-        });
-    }
-};
+  },
+  remove: (req, res) => {
+      console.log(55, req.params.id, req.session.userId)
+      const db = req.app.get('db');
+      const {id} = req.params
+      db.removeListing([id, req.session.userId]).then(listings => res.send(listings))
+  }
+}

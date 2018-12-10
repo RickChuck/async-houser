@@ -1,14 +1,17 @@
-CREATE TABLE houses(
-    house_id SERIAL PRIMARY KEY,
-    house_name VARCHAR(30),
-    house_address VARCHAR(100),
-    city VARCHAR(100),
-    house_state VARCHAR(2),
-    zip_code INT,
-    img TEXT,
-    mortgage DECIMAL,
-    rent DECIMAL
-)
+CREATE TABLE houser (
+    id SERIAL PRIMARY KEY,
+    property_name character varying(60),
+    property_descrip text,
+    address character varying(60),
+    city character varying(60),
+    my_state character varying(60),
+    zip integer,
+    img_url text,
+    loan_amount money,
+    monthly_mortgage money,
+    desired_rent money,
+    user_id integer REFERENCES sim2_users(id)
+);
 
-INSERT INTO houses(house_name, house_address, city, house_state, zip_code, img, mortgage, rent)
-VALUES('Big test house', '1759 S. Range rd.', 'Test Town', 'UT', 80001,' ', 1500, 2100)
+INSERT INTO houser(property_name, property_descrip, address, city, my_state, zip, img_url, loan_amount, monthly_mortgage, desired_rent)
+VALUES('Big test house', 'WORDS WORDS WORDS WORDS WORDS WORDS WORDY WORD WORDS', '1759 S. Range rd.', 'City Town', 'UT', 50000, '', 2100, 2100, 2100)

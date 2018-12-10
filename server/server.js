@@ -1,75 +1,38 @@
-require('dotenv').config()
-const express = require("express");
-const massive = require("massive");
+require('dotenv').config();
+const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
-// const session = require('express-session');
+const massive = require('massive');
+const controller = require('./ctrl');
+const auth = require('./auth_ctrl');
+const session = require('express-session');
 
-const ctrl = require('./ctrl');
-
-massive(process.env.CONNECTION_STRING).then(dbInstance => app.set('db', dbInstance))
 
 const app = express();
-
 app.use(bodyParser.json());
-app.use(cors());
+//session
+app.use(session({
+    secret: process.env.SESSION_SECRET,   //require -> provides the key for the session encryption
+    resave: false,   //optional -> which says whether to save a session that wasnt changed
+    saveUninitialized: true    //optional -> which says whether to save a session that is new and wasnt added to
+}))
 
-app.get('/api/houses', ctrl.getHouses);
-app.post('/api/add', ctrl.addHouse);
-app.delete('/api/houses/:house_id', ctrl.deleteHouse)
-
-
-SERVER_PORT = process.env.SERVER_PORT || SERVER_PORT;
-app.listen(SERVER_PORT, () => {
-    console.log(`I hear it on port: ${SERVER_PORT}`)
+//massive
+massive(process.env.CONNECTION_STRING).then(db => {
+    app.set('db', db);
+    console.log('db connected')
 })
 
+//auth endpoints
+app.post('/api/auth/login', auth.login)
+app.post('/api/auth/register', auth.register)
+app.post('/api/auth/logout', auth.logout)
+//properties endpoints
+app.post('/api/properties', controller.create)
+app.get('/api/properties', controller.getHouses)
+app.delete('/api/properties/:id', controller.remove)
 
 
-// app.use((req, res, next) => {
-//     console.log("Hey Listen! I'm middleware");
-//     next();
-// });
-
-// let { 
-//     CONNECTION_STRING, 
-//     SERVER_PORT, 
-//     SESSION_SECRET 
-// } = process.env;
-
-// app.use(session({
-//     secret: SESSION_SECRET,
-//     saveUninitialized: true,
-//     resave: false
-// }));
-
-
-// app.get('/api/houses', async (req, res) => {
-//     const db = req.app.get('db')
-//     let houses = await db.get_houses()
-//     res.status(200).send(houses);
-// })
-
-// app.post('/api/newPunch', async (req, res) => {
-//     const db = req.app.get('db')
-//     const {}
-// })
-
-// app.delete('/api/deleteHouse/:id', async (req, res) => {
-//     const db = req.app.get('db')
-//     const updateHouses = await db.delete_houses([+req.params.id])
-//     res.status(200).send(updateHouses)
-// })
-
-
-// async function startServer() {
-//     try {
-//         const db = await massive(CONNECTION_STRING)
-//         app.set('db', db)
-//         console.log('db connected')
-//         app.listen(SERVER_PORT, () => console.log(`I hear it on port: ${SERVER_PORT}`))
-//     } catch (err) {
-//         console.error('startServer function failure in server/server.js', err)
-//     }
-// }
-// startServer();
+const port = process.env.SERVER_PORT || port;
+app.listen(port, ()=> {
+    console.log(`Server is up and running on ${port}`)
+})
