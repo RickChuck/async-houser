@@ -9,34 +9,33 @@ const Header = styled.div`
     height: 65px;
     background: #519872;
     display: flex;
+    padding: 10px;
+    z-index: 1;
     align-content: center;
     > h4{
-        position: absolute;
-        right: 310px;
         color: white;
+        position: absolute;
+        right: 15%;
+        top: 21px;
     }
 `
 const Div1 = styled.div`
-    position: absolute;
-    left: 350px;
+    margin: 10px;
     > h2 {
         color: white;
         }
 `
 const Div2 = styled.div`
-    position: absolute;
-    left: 444px;
+  margin: 10px;
     > h2 {
-        color: white;
-        font-weight: normal;
-        }
+      color: white;
+      font-weight: normal;     
 `
 const Logo = styled.div`
-    position: absolute;
-    left: 300px;
     > img{
         width: 35px;
         padding-top: 17px;
+        margin: 10px;
     }
 `
 

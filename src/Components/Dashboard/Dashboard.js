@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+// import NumberFormat from 'react-number-format';
 import axios from 'axios';
 import icon from '../../images/delete_button.png';
 import styled from 'styled-components';
@@ -11,10 +12,11 @@ const Body = styled.div`
     flex-direction: column;
     align-items: center;
     background: #afd4c0;
-    height: 100vh;
+    height: auto;
 `
 const Middle = styled.div`
-    width: 70%;
+
+    width: 75%;
     height: 100%;
     background: linear-gradient(to bottom, #e2f3ea, #ffffff);
     padding: 10px;
@@ -31,32 +33,40 @@ const Button = styled.button`
 const Listing = styled.div`
     display: flex;
     margin-bottom: 10px;
+    width: auto;
     background: lightgray;
 `
 const Name = styled.div`
     display: flex;
-    align-self: start;
+    align-content: center;
     flex-direction: column;
+    flex-wrap: wrap;
     width: 70%;
     padding-left: 5px;
     padding-right: 5px;
     > p {
         font-size: 12px;
+        text-align: start;
+        margin: 5px;
     }
     
 `
 const Pic = styled.div`
-    width: 100vw;
+    width: 30vw;
+    height: 30vh;
     margin: 15px;
+    > img {
+        width: 30vw;
+        border-radius: 2px;
+    }
 `
 const Other = styled.div`
     width: 60%;
     display: flex;
-    flex-wrap; wrap;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
     padding: 20px;
+    font-weight: 600;
     > li {
         font-size: 14px;
         list-style-type: none;
@@ -134,13 +144,13 @@ class Dashboard extends Component{
         console.log(this.state)
         let listingsDisplay = this.state.listings.filter((item, index)=>{
             let stringd = item.desired_rent.substring(1)
-            console.log(4040, stringd, this.state.input)
             if( stringd > this.state.price){
                 return true
             } else {
                 return false
             }
         }).map((el, i) => {
+            console.log()
             return (
                 <Listing key={i}>
                     <Pic>
@@ -161,12 +171,11 @@ class Dashboard extends Component{
                         <li>Zip: {el.zip}</li>
                     </Other>
                         <div onClick={() => this.delete(el.id)}>
-                            <img src={icon} alt=""/>
+                            <img src={icon} className='icon' alt=""/>
                         </div>
                 </Listing>
             )
         })
-
         return(
             <Body>
                 <Headers/>
@@ -174,8 +183,8 @@ class Dashboard extends Component{
                     <Link to={'/wizard/1'}><Button>Add new property</Button></Link>
                     <br/>
                     <br/>
-                    List properties with "desired rent" greator than: $ <input onChange={this.handleInput}
-                        value={this.state.input} type="text"/>
+                    List properties with "desired rent" greator than: $ <input displayType={'number'} onChange={this.handleInput}
+                        value={this.state.input} />
                     <Button2 onClick={this.handleClick}>Filter</Button2>
                     <Button3 onClick={this.handleReset}>Reset</Button3>
                     <br/>
@@ -186,6 +195,10 @@ class Dashboard extends Component{
                 </Middle>
             </Body>
         )
+    }
+
+    newMethod() {
+        return 4040;
     }
 }
 export default Dashboard;
