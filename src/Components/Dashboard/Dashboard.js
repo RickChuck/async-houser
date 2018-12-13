@@ -13,6 +13,7 @@ const Body = styled.div`
     align-items: center;
     background: #afd4c0;
     height: auto;
+    width: auto;
 `
 const Middle = styled.div`
 
@@ -35,6 +36,7 @@ const Listing = styled.div`
     margin-bottom: 10px;
     width: auto;
     background: lightgray;
+    border-radius: 2px;
 `
 const Name = styled.div`
     display: flex;
@@ -56,7 +58,8 @@ const Pic = styled.div`
     height: 30vh;
     margin: 15px;
     > img {
-        width: 30vw;
+        width: 25vw;
+        height: 30vh;
         border-radius: 2px;
     }
 `
@@ -144,7 +147,7 @@ class Dashboard extends Component{
         console.log(this.state)
         let listingsDisplay = this.state.listings.filter((item, index)=>{
             let stringd = item.desired_rent.substring(1)
-            if( stringd > this.state.price){
+            if( stringd > +this.state.price){
                 return true
             } else {
                 return false
@@ -183,7 +186,7 @@ class Dashboard extends Component{
                     <Link to={'/wizard/1'}><Button>Add new property</Button></Link>
                     <br/>
                     <br/>
-                    List properties with "desired rent" greator than: $ <input displayType={'number'} onChange={this.handleInput}
+                    List properties with "Desired Rent" greater than: $ <input displayType={'number'} onChange={this.handleInput}
                         value={this.state.input} />
                     <Button2 onClick={this.handleClick}>Filter</Button2>
                     <Button3 onClick={this.handleReset}>Reset</Button3>

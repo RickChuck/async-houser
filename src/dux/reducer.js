@@ -92,7 +92,6 @@ export function updateCity(city){
     }
 }
 export function updateMyState(my_state){
-    console.log(111, my_state)
     return{
         type: MYSTATE,
         payload: my_state

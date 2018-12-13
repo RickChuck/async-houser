@@ -5,7 +5,7 @@ import logo from '../../images/header_logo.png';
 import {withRouter} from 'react-router-dom';
 
 const Header = styled.div`
-    width: 100%;
+    width: 98.5%;
     height: 65px;
     background: #519872;
     display: flex;
